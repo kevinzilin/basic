@@ -61,32 +61,18 @@ class DefaultController extends Controller {
 			 */
 			libxml_disable_entity_loader ( true );
 			$postObj = simplexml_load_string ( $postStr, 'SimpleXMLElement', LIBXML_NOCDATA );
-			$fromUsername = $postObj->FromUserName;
 			$toUsername = $postObj->ToUserName;
+			$fromUsername = $postObj->FromUserName;
 			$MsgType = $postObj->MsgType;
 			$keyword = trim ( $postObj->Content );
 			$time = time ();
 			if ($MsgType == 'event') { // 关注和取消关注事件
 				if ($postObj->Event == 'subscribe') { // 关注
 					$contentStr = "欢迎关注";
-					$this->send_text_Msg($fromUsername, $toUsername, $time, $contentStr);
+					$this->send_text_Msg ( $fromUsername, $toUsername, $time, $contentStr );
 				} elseif ($postObj->Event == 'unsubscribe') { // 取消关注
 				}
 			}
-			
-			
-			
-			if (! empty ( $keyword )) {
-				$msgType = "text";
-				$contentStr = "Welcome to wechat world!";
-				
-				echo $resultStr;
-			} else {
-				echo "Input something...";
-			}
-		} else {
-			echo "";
-			exit ();
 		}
 	}
 	public function send_text_Msg($toUsername, $fromUsername, $time, $contentStr) {
