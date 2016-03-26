@@ -72,8 +72,20 @@ class DefaultController extends Controller {
 				} elseif ($postObj->Event == 'unsubscribe') { // 取消关注
 				}
 			}
-			if ($MsgType == 'text') { // 普通文本消息
-				$this->send_text_Msg ( $fromUsername, $toUsername, $time, $postObj->Content );
+			if ($MsgType == 'text') { // 普通文本消息 关键字匹配
+				if ($postObj->Content == '图文') {
+					$photo_arr=[
+							[
+									'title'=>'测试',
+									'description'=>'描述',
+									'picur'=>'http://e.hiphotos.baidu.com/image/h%3D200/sign=f1bdcdf64010b912a0c1f1fef3fcfcb5/8326cffc1e178a8285adf5edf103738da877e8ee.jpg',//图片地址
+									'url'=>'https://www.baidu.com/',//图文地址
+							]
+					];
+					$this->send_photo_Msg ( $fromUsername, $toUsername, $time, $photo_arr );
+				} else {
+					$this->send_text_Msg ( $fromUsername, $toUsername, $time, $postObj->Content );
+				}
 			}
 		}
 	}
@@ -87,6 +99,26 @@ class DefaultController extends Controller {
 							<FuncFlag>0</FuncFlag>
 							</xml>";
 		$resultStr = sprintf ( $textTpl, $toUsername, $fromUsername, $time, 'text', $contentStr );
+		echo $resultStr;
+	}
+	public function send_photo_Msg($toUsername, $fromUsername, $time, $photo_arr) { // 回复图文消息
+		$textTpl = "<xml>
+		<ToUserName><![CDATA[%s]]></ToUserName>
+		<FromUserName><![CDATA[%s]]></FromUserName>
+		<CreateTime>%s</CreateTime>
+		<MsgType><![CDATA[news]]></MsgType>
+		<ArticleCount>" . count ( $photo_arr ) . "</ArticleCount>
+		<Articles>";
+		foreach ( $photo_arr as $v ) {
+			$textTpl .= "<item>
+		<Title><![CDATA[" . $v ['title'] . "]]></Title>
+		<Description><![CDATA[" . $v ['description'] . "]]></Description>
+		<PicUrl><![CDATA[" . $v ['picur'] . "]]></PicUrl>
+		<Url><![CDATA[" . $v ['url'] . "]]></Url>
+		</item>";
+		}
+		$textTpl .= "</Articles></xml>";
+		$resultStr = sprintf ( $textTpl, $toUsername, $fromUsername, $time, 'text' );
 		echo $resultStr;
 	}
 }
