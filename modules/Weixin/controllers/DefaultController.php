@@ -85,5 +85,6 @@ class DefaultController extends Controller {
 							<FuncFlag>0</FuncFlag>
 							</xml>";
 		$resultStr = sprintf ( $textTpl, $toUsername, $fromUsername, $time, 'text', $contentStr );
+		echo $resultStr;
 	}
 }
