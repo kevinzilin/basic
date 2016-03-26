@@ -9,9 +9,12 @@ class DefaultController extends Controller {
 	public function actionIndex() {
 		$echoStr = \Yii::$app->request->get ( 'echostr' );
 		if ($echoStr) {
-			$this->valid ( $echoStr );
+			if($this->checkSignature() ){
+				$this->responseMsg();
+			}		
 		}
-		$this->responseMsg();
+		//$this->valid ( $echoStr );
+		//$this->responseMsg();
 		// return $this->render ( 'index' );
 	}
 	public function valid($echoStr) {
@@ -27,9 +30,9 @@ class DefaultController extends Controller {
 			throw new Exception ( 'TOKEN is not defined!' );
 		}
 		
-		$signature = $_GET ["signature"];
-		$timestamp = $_GET ["timestamp"];
-		$nonce = $_GET ["nonce"];
+		$signature =\Yii::$app->request->get ( 'signature' ); 
+		$timestamp = \Yii::$app->request->get ( 'timestamp' ); 
+		$nonce = \Yii::$app->request->get ( 'nonce' ); 
 		
 		$token = $this->token;
 		$tmpArr = array (
