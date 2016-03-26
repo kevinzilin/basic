@@ -7,20 +7,14 @@ use yii\web\Controller;
 class DefaultController extends Controller {
 	public $token = 'weixin';
 	public $enableCsrfValidation = false;
-	public function init(){
-		parent::init();
-		$this->actionIndex();
-	}
 	public function actionIndex() {
 		$echoStr = \Yii::$app->request->get ( 'echostr' );
-		if ($echoStr) {
-			//$this->valid ( $echoStr );
-			if($this->checkSignature ()){
-				$this->responseMsg();
-			}
+		if($this->checkSignature() && $echoStr  ){
+			echo $echoStr; //这里就是服务器配置Url时验证Token,通过了就算是接入成功.
+			exit;
+		}else if($this->checkSignature ()){
+			$this->responseMsg();
 		}
-		//$this->responseMsg();
-		// return $this->render ( 'index' );
 	}
 	public function valid($echoStr) {
 		// valid signature , option
