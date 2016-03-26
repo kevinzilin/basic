@@ -9,11 +9,11 @@ class DefaultController extends Controller {
 	public $enableCsrfValidation = false;
 	public function actionIndex() {
 		$echoStr = \Yii::$app->request->get ( 'echostr' );
-		if($this->checkSignature() && $echoStr  ){
-			echo $echoStr; //这里就是服务器配置Url时验证Token,通过了就算是接入成功.
-			exit;
-		}else if($this->checkSignature ()){
-			$this->responseMsg();
+		if ($this->checkSignature () && $echoStr) { // 提交url验证的时候会多一个echostr参数
+			echo $echoStr; // 这里就是服务器配置Url时验证Token,通过了就算是接入成功.
+			exit ();
+		} else if ($this->checkSignature ()) {
+			$this->responseMsg ();
 		}
 	}
 	public function valid($echoStr) {
@@ -23,15 +23,14 @@ class DefaultController extends Controller {
 			exit ();
 		}
 	}
-	private function checkSignature() {
-		// you must define TOKEN by yourself
+	private function checkSignature() { // 验证是否为微信发送
 		if (! $this->token) {
 			throw new Exception ( 'TOKEN is not defined!' );
 		}
 		
-		$signature =\Yii::$app->request->get ( 'signature' ); 
-		$timestamp = \Yii::$app->request->get ( 'timestamp' ); 
-		$nonce = \Yii::$app->request->get ( 'nonce' ); 
+		$signature = \Yii::$app->request->get ( 'signature' );
+		$timestamp = \Yii::$app->request->get ( 'timestamp' );
+		$nonce = \Yii::$app->request->get ( 'nonce' );
 		
 		$token = $this->token;
 		$tmpArr = array (
@@ -50,8 +49,8 @@ class DefaultController extends Controller {
 			return false;
 		}
 	}
-	public function responseMsg() {
-		// get post data, May be due to the different environments
+	public function responseMsg() { // 接收微信推送的消息
+	                                // get post data, May be due to the different environments
 		$postStr = $GLOBALS ["HTTP_RAW_POST_DATA"];
 		
 		// extract post data
@@ -64,20 +63,23 @@ class DefaultController extends Controller {
 			$postObj = simplexml_load_string ( $postStr, 'SimpleXMLElement', LIBXML_NOCDATA );
 			$fromUsername = $postObj->FromUserName;
 			$toUsername = $postObj->ToUserName;
+			$MsgType = $postObj->MsgType;
 			$keyword = trim ( $postObj->Content );
 			$time = time ();
-			$textTpl = "<xml>
-							<ToUserName><![CDATA[%s]]></ToUserName>
-							<FromUserName><![CDATA[%s]]></FromUserName>
-							<CreateTime>%s</CreateTime>
-							<MsgType><![CDATA[%s]]></MsgType>
-							<Content><![CDATA[%s]]></Content>
-							<FuncFlag>0</FuncFlag>
-							</xml>";
+			if ($MsgType == 'event') { // 关注和取消关注事件
+				if ($postObj->Event == 'subscribe') { // 关注
+					$contentStr = "欢迎关注";
+					$this->send_text_Msg($fromUsername, $toUsername, $time, $contentStr);
+				} elseif ($postObj->Event == 'unsubscribe') { // 取消关注
+				}
+			}
+			
+			
+			
 			if (! empty ( $keyword )) {
 				$msgType = "text";
 				$contentStr = "Welcome to wechat world!";
-				$resultStr = sprintf ( $textTpl, $fromUsername, $toUsername, $time, $msgType, $contentStr );
+				
 				echo $resultStr;
 			} else {
 				echo "Input something...";
@@ -86,5 +88,16 @@ class DefaultController extends Controller {
 			echo "";
 			exit ();
 		}
+	}
+	public function send_text_Msg($toUsername, $fromUsername, $time, $contentStr) {
+		$textTpl = "<xml>
+							<ToUserName><![CDATA[%s]]></ToUserName>
+							<FromUserName><![CDATA[%s]]></FromUserName>
+							<CreateTime>%s</CreateTime>
+							<MsgType><![CDATA[%s]]></MsgType>
+							<Content><![CDATA[%s]]></Content>
+							<FuncFlag>0</FuncFlag>
+							</xml>";
+		$resultStr = sprintf ( $textTpl, $toUsername, $fromUsername, $time, 'text', $contentStr );
 	}
 }
