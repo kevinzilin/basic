@@ -8,6 +8,9 @@ $config = [
 			'users' => [
             'class' => 'app\modules\Users\Module',
         ],
+			'weixin' => [
+					'class' => 'app\modules\Weixin\Module',
+			],
 	],
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
