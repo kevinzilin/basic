@@ -61,21 +61,24 @@ class DefaultController extends Controller {
 			 */
 			libxml_disable_entity_loader ( true );
 			$postObj = simplexml_load_string ( $postStr, 'SimpleXMLElement', LIBXML_NOCDATA );
-			$toUsername = $postObj->ToUserName;
-			$fromUsername = $postObj->FromUserName;
-			$MsgType = $postObj->MsgType;
-			$keyword = trim ( $postObj->Content );
-			$time = time ();
+			$toUsername = $postObj->ToUserName; // 公众号
+			$fromUsername = $postObj->FromUserName; // 用户OpenID
+			$MsgType = $postObj->MsgType; // 消息类型
 			if ($MsgType == 'event') { // 关注和取消关注事件
 				if ($postObj->Event == 'subscribe') { // 关注
 					$contentStr = "欢迎关注";
+					$time = time ();
 					$this->send_text_Msg ( $fromUsername, $toUsername, $time, $contentStr );
 				} elseif ($postObj->Event == 'unsubscribe') { // 取消关注
 				}
 			}
+			if($MsgType=='text'){//普通文本消息
+				$this->send_text_Msg ( $fromUsername, $toUsername, $time,  $postObj->Content);
+			}
+			
 		}
 	}
-	public function send_text_Msg($toUsername, $fromUsername, $time, $contentStr) {
+	public function send_text_Msg($toUsername, $fromUsername, $time, $contentStr) { // 回复普通文本
 		$textTpl = "<xml>
 							<ToUserName><![CDATA[%s]]></ToUserName>
 							<FromUserName><![CDATA[%s]]></FromUserName>
