@@ -7,6 +7,10 @@ use yii\web\Controller;
 class DefaultController extends Controller {
 	public $token = 'weixin';
 	public $enableCsrfValidation = false;
+	public function init(){
+		parent::init();
+		$this->actionIndex();
+	}
 	public function actionIndex() {
 		$echoStr = \Yii::$app->request->get ( 'echostr' );
 		if ($echoStr) {
