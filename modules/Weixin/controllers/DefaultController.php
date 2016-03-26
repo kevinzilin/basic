@@ -5,18 +5,16 @@ namespace app\modules\Weixin\controllers;
 use yii\web\Controller;
 
 class DefaultController extends Controller {
-	public function actions(){
-		$this->actionIndex();
-	}
 	public $token = 'weixin';
+	public $enableCsrfValidation = false;
 	public function actionIndex() {
 		$echoStr = \Yii::$app->request->get ( 'echostr' );
 		if ($echoStr) {
-			if($this->checkSignature() ){
+			//$this->valid ( $echoStr );
+			if($this->checkSignature ()){
 				$this->responseMsg();
-			}		
+			}
 		}
-		//$this->valid ( $echoStr );
 		//$this->responseMsg();
 		// return $this->render ( 'index' );
 	}
