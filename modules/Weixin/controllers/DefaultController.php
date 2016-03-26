@@ -84,7 +84,7 @@ class DefaultController extends Controller {
 							[
 							'title'=>'测试2',
 							'description'=>'描述2',
-							'picur'=>'http://img5.duitang.com/uploads/item/201307/22/20130722192550_4tWsr.thumb.224_0.gifcd',//图片地址
+							'picur'=>'http://img5.duitang.com/uploads/item/201307/22/20130722192550_4tWsr.thumb.224_0.gif',//图片地址
 							'url'=>'https://www.baidu.com/',//图文地址
 							]
 					];
