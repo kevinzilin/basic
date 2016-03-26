@@ -64,18 +64,17 @@ class DefaultController extends Controller {
 			$toUsername = $postObj->ToUserName; // 公众号
 			$fromUsername = $postObj->FromUserName; // 用户OpenID
 			$MsgType = $postObj->MsgType; // 消息类型
+			$time = time ();
 			if ($MsgType == 'event') { // 关注和取消关注事件
 				if ($postObj->Event == 'subscribe') { // 关注
 					$contentStr = "欢迎关注";
-					$time = time ();
 					$this->send_text_Msg ( $fromUsername, $toUsername, $time, $contentStr );
 				} elseif ($postObj->Event == 'unsubscribe') { // 取消关注
 				}
 			}
-			if($MsgType=='text'){//普通文本消息
-				$this->send_text_Msg ( $fromUsername, $toUsername, $time,  $postObj->Content);
+			if ($MsgType == 'text') { // 普通文本消息
+				$this->send_text_Msg ( $fromUsername, $toUsername, $time, $postObj->Content );
 			}
-			
 		}
 	}
 	public function send_text_Msg($toUsername, $fromUsername, $time, $contentStr) { // 回复普通文本
