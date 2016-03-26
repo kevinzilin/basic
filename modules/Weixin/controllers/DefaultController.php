@@ -5,6 +5,9 @@ namespace app\modules\Weixin\controllers;
 use yii\web\Controller;
 
 class DefaultController extends Controller {
+	public function actions(){
+		$this->actionIndex();
+	}
 	public $token = 'weixin';
 	public function actionIndex() {
 		$echoStr = \Yii::$app->request->get ( 'echostr' );
