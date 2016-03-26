@@ -1,34 +1,18 @@
 <?php
 
 namespace app\models;
-
+/**
+ * This is the model class for table "user".
+ *
+ * @property integer $id
+ * @property string $username
+ * @property string $wx_name
+ * @property string $password
+ * @property string $authKey
+ * @property string $accessToken
+ * @property string $wx_openid
+ */
 class User extends /*\yii\base\Object*/ \yii\db\ActiveRecord implements \yii\web\IdentityInterface {
-	
-	/*
-	 * public $id;
-	 * public $username;
-	 * public $password;
-	 * public $authKey;
-	 * public $accessToken;
-	 *
-	 * private static $users = [
-	 * '100' => [
-	 * 'id' => '100',
-	 * 'username' => 'admin',
-	 * 'password' => 'admin',
-	 * 'authKey' => 'test100key',
-	 * 'accessToken' => '100-token',
-	 * ],
-	 * '101' => [
-	 * 'id' => '101',
-	 * 'username' => 'demo',
-	 * 'password' => 'demo',
-	 * 'authKey' => 'test101key',
-	 * 'accessToken' => '101-token',
-	 * ],
-	 * ];
-	 */
-	
 	/**
 	 * @inheritdoc
 	 */
@@ -39,26 +23,29 @@ class User extends /*\yii\base\Object*/ \yii\db\ActiveRecord implements \yii\web
 	/**
 	 * @inheritdoc
 	 */
-	public function rules() {
-		return [ 
-				[ [ 'username','password' ],'required' ],
-				[ [ 'username' ], 'string', 'max' => 50 ],
-				[ [ 'password' ],'string','max' => 32 ],
-				[ [ 'authKey' ],'string','max' => 100 ],
-				[ [ 'accessToken' ],'string','max' => 100 ] 
+	public function rules()
+	{
+		return [
+				[['username', 'password'], 'required'],
+				[['username'], 'string', 'max' => 50],
+				[['wx_name', 'wx_openid'], 'string', 'max' => 255],
+				[['password', 'authKey', 'accessToken'], 'string', 'max' => 100]
 		];
 	}
 	
 	/**
 	 * @inheritdoc
 	 */
-	public function attributeLabels() {
-		return [ 
+	public function attributeLabels()
+	{
+		return [
 				'id' => 'ID',
 				'username' => 'Username',
+				'wx_name' => 'Wx Name',
 				'password' => 'Password',
-				'authKey' => 'AuthKey',
-				'accessToken' => 'AccessToken' 
+				'authKey' => 'Auth Key',
+				'accessToken' => 'Access Token',
+				'wx_openid' => 'Wx Openid',
 		];
 	}
 	
@@ -145,6 +132,7 @@ class User extends /*\yii\base\Object*/ \yii\db\ActiveRecord implements \yii\web
 	 * @return boolean if password provided is valid for current user
 	 */
 	public function validatePassword($password) {
+		$password = md5 ( md5 ( $password ) . sha1 ( $password ) );//加密 
 		return $this->password === $password;
 	}
 	public function getOrders() {
