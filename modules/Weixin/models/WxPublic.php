@@ -91,5 +91,12 @@ class WxPublic extends \yii\db\ActiveRecord {
 		$appid = $this->wx_appid;
 		$appsecret = $this->wx_appsecret;
 		$url = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=$appid&secret=$appsecret";
+		$res=\Fun::getCurl($url);
+		$res=json_decode($res);//将json 格式转为对象
+		$this->wx_access_token=$res->access_token;
+		$this->expired_time=time()+7200;
+		if($this->save()){
+			return $this->wx_access_token;
+		}
 	}
 }

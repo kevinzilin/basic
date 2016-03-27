@@ -15,7 +15,6 @@ class DefaultController extends Controller {
 		$this->token=$wx->wx_token;
 	}
 	public function actionIndex() {
-		\Fun::getCurl('http://www.baidu.com');die;
 		$echoStr = \Yii::$app->request->get ( 'echostr' );
 		if ($this->checkSignature () && $echoStr) { // 提交url验证的时候会多一个echostr参数
 			echo $echoStr; // 这里就是服务器配置Url时验证Token,通过了就算是接入成功.
