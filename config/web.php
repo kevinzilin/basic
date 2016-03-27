@@ -4,6 +4,7 @@ $params = require (__DIR__ . '/params.php');
 
 $config = [ 
 		'id' => 'basic',
+		'defaultRoute'=>'users',
 		'modules' => [ 
 				'users' => [ 
 						'class' => 'app\modules\Users\Module' 

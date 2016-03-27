@@ -1,47 +1,88 @@
+
+    <!-- Bootstrap -->
+<!--     <link href="assets/css/vendor/bootstrap/bootstrap.min.css" rel="stylesheet"> -->
+    
+<!--     <link rel="stylesheet" href="assets/css/vendor/bootstrap-checkbox.css"> -->
+
+<!--     <link href="assets/css/minimal.css" rel="stylesheet"> -->
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+ 
+
+    <!-- Wrap all page content here -->
+    <div id="wrap">
+      <!-- Make page fluid -->
+      <div class="row">
+        <!-- Page content -->
+        <div id="content" class="col-md-12 full-page login">
 <?php
-
-/* @var $this yii\web\View */
-/* @var $form yii\bootstrap\ActiveForm */
-/* @var $model app\models\LoginForm */
-
+use app\assets\LoginAsset;
 use yii\helpers\Html;
-use yii\bootstrap\ActiveForm;
-
-$this->title = 'Login';
-$this->params['breadcrumbs'][] = $this->title;
+LoginAsset::register ( $this ); // $this 代表视图对象
 ?>
-<div class="site-login">
-    <h1><?= Html::encode($this->title) ?></h1>
+<?php $this->beginPage()?>
+<!DOCTYPE html>
+<html>
+<head>
+<title>登陆</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8" />
+<link rel="icon" type="image/ico"
+	href="http://tattek.com/minimal/assets/images/favicon.ico" />
+<link
+	href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css"
+	rel="stylesheet">
+    <?= Html::csrfMetaTags()?>
+    <?php $this->head()?>
+      </head>
+<body class="bg-1">
 
-    <p>Please fill out the following fields to login:</p>
 
-    <?php $form = ActiveForm::begin([
-        'id' => 'login-form',
-        'options' => ['class' => 'form-horizontal'],
-        'fieldConfig' => [
-            'template' => "{label}\n<div class=\"col-lg-3\">{input}</div>\n<div class=\"col-lg-8\">{error}</div>",
-            'labelOptions' => ['class' => 'col-lg-1 control-label'],
-        ],
-    ]); ?>
+          <div class="inside-block">
+            <img src="<?=Yii::getAlias('/basic/modules/Users/web')?>/images/logo-big.png" alt class="logo">
+            <h1><strong>Welcome</strong> Stranger</h1>
+            <h5>Minimal Admin Theme</h5>
 
-        <?= $form->field($model, 'username')->textInput(['autofocus' => true]) ?>
+            <form id="form-signin" class="form-signin">
+              <section>
+                <div class="input-group">
+                  <input type="text" class="form-control" name="username" placeholder="Username">
+                  <div class="input-group-addon"><i class="fa fa-user"></i></div>
+                </div>
+                <div class="input-group">
+                  <input type="password" class="form-control" name="password" placeholder="Password">
+                  <div class="input-group-addon"><i class="fa fa-key"></i></div>
+                </div>
+              </section>
+              <section class="controls">
+                <div class="checkbox check-transparent">
+                  <input type="checkbox" value="1" id="remember" checked>
+                  <label for="remember">Remember me</label>
+                </div>
+                <a href="#">Forget password?</a>
+              </section>
+              <section class="log-in">
+                <button class="btn btn-greensea">Log In</button>
+                <span>or</span>
+                <button class="btn btn-slategray">Create an account</button>
+              </section>
+            </form>
+          </div>
 
-        <?= $form->field($model, 'password')->passwordInput() ?>
 
-        <?= $form->field($model, 'rememberMe')->checkbox([
-            'template' => "<div class=\"col-lg-offset-1 col-lg-3\">{input} {label}</div>\n<div class=\"col-lg-8\">{error}</div>",
-        ]) ?>
-
-        <div class="form-group">
-            <div class="col-lg-offset-1 col-lg-11">
-                <?= Html::submitButton('Login', ['class' => 'btn btn-primary', 'name' => 'login-button']) ?>
-            </div>
         </div>
-
-    <?php ActiveForm::end(); ?>
-
-    <div class="col-lg-offset-1" style="color:#999;">
-        You may login with <strong>admin/admin</strong> or <strong>demo/demo</strong>.<br>
-        To modify the username/password, please check out the code <code>app\models\User::$users</code>.
+        <!-- /Page content -->  
+      </div>
     </div>
-</div>
+    <!-- Wrap all page content end -->
+<?php $this->endBody()?>
+</body>
+</html>
+<?php $this->endPage()?>
+      
