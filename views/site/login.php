@@ -45,7 +45,7 @@ LoginAsset::register ( $this ); // $this 代表视图对象
 
 
           <div class="inside-block">
-            <img src="<?=Yii::getAlias('/basic/modules/Users/web')?>/images/logo-big.png" alt class="logo">
+            <img src="<?=Yii::getAlias('@app/modules/Users/web')?>/images/logo-big.png" alt class="logo">
             <h1><strong>Welcome</strong> Stranger</h1>
             <h5>Minimal Admin Theme</h5>
 
