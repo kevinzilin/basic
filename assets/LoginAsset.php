@@ -15,13 +15,13 @@ use yii\web\AssetBundle;
  * @since 2.0
  */
 class LoginAsset extends AssetBundle {
-	public $sourcePath='@app/modules/Users/web';
-// 	public $basePath = '@app/modules/Users/web';
-// 	public $baseUrl = '@web';
+	//public $sourcePath='@app/modules/Users/web';
+	public $basePath = '@webroot';
+ 	public $baseUrl = '@web';
 	public $css = [ 
-			'css/vendor/bootstrap/bootstrap.min.css',
-			'css/vendor/bootstrap-checkbox.css' ,
-			'css/minimal.css',
+			'users/css/vendor/bootstrap/bootstrap.min.css',
+			'users/css/vendor/bootstrap-checkbox.css' ,
+			'users/css/minimal.css',
 	];
 	public $js = [ ];
 }
