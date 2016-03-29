@@ -12,29 +12,29 @@ UsersAsset::register ( $this ); // $this 代表视图对象
 <meta charset="UTF-8" />
 
 <!-- Bootstrap -->
-<!-- <link href="assets/css/vendor/bootstrap/bootstrap.min.css" -->
+<!-- <link href="users/css/vendor/bootstrap/bootstrap.min.css" -->
 <!-- 	rel="stylesheet"> -->
 <link
 	href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css"
 	rel="stylesheet">
 	
-<!-- <link rel="stylesheet" href="assets/css/vendor/animate/animate.css"> -->
+<!-- <link rel="stylesheet" href="users/css/vendor/animate/animate.css"> -->
 <!-- <link type="text/css" rel="stylesheet" media="all" -->
-<!-- 	href="assets/js/vendor/mmenu/css/jquery.mmenu.all.css" /> -->
+<!-- 	href="users/js/vendor/mmenu/css/jquery.mmenu.all.css" /> -->
 <!-- <link rel="stylesheet" -->
-<!-- 	href="assets/js/vendor/videobackground/css/jquery.videobackground.css"> -->
-<!-- <link rel="stylesheet" href="assets/css/vendor/bootstrap-checkbox.css"> -->
+<!-- 	href="users/js/vendor/videobackground/css/jquery.videobackground.css"> -->
+<!-- <link rel="stylesheet" href="users/css/vendor/bootstrap-checkbox.css"> -->
 
-<!-- <link rel="stylesheet" href="assets/js/vendor/chosen/css/chosen.min.css"> -->
+<!-- <link rel="stylesheet" href="users/js/vendor/chosen/css/chosen.min.css"> -->
 <!-- <link rel="stylesheet" -->
-<!-- 	href="assets/js/vendor/chosen/css/chosen-bootstrap.css"> -->
+<!-- 	href="users/js/vendor/chosen/css/chosen-bootstrap.css"> -->
 <!-- <link rel="stylesheet" -->
-<!-- 	href="assets/js/vendor/datatables/css/dataTables.bootstrap.css"> -->
-<!-- <link rel="stylesheet" href="assets/js/vendor/datatables/css/ColVis.css"> -->
+<!-- 	href="users/js/vendor/datatables/css/dataTables.bootstrap.css"> -->
+<!-- <link rel="stylesheet" href="users/js/vendor/datatables/css/ColVis.css"> -->
 <!-- <link rel="stylesheet" -->
-<!-- 	href="assets/js/vendor/datatables/css/TableTools.css"> -->
+<!-- 	href="users/js/vendor/datatables/css/TableTools.css"> -->
 
-<!-- <link href="assets/css/minimal.css" rel="stylesheet"> -->
+<!-- <link href="users/css/minimal.css" rel="stylesheet"> -->
 
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -197,7 +197,7 @@ UsersAsset::register ( $this ); // $this 代表视图对象
 									</h1></li>
 								<li><a class="cyan" href="#">
 										<div class="profile-photo">
-											<img src="assets/images/ici-avatar.jpg" alt />
+											<img src="users/images/ici-avatar.jpg" alt />
 										</div>
 										<div class="message-info">
 											<span class="sender">Ing. Imrich Kamarel</span> <span
@@ -209,7 +209,7 @@ UsersAsset::register ( $this ); // $this 代表视图对象
 
 								<li><a class="green" href="#">
 										<div class="profile-photo">
-											<img src="assets/images/arnold-avatar.jpg" alt />
+											<img src="users/images/arnold-avatar.jpg" alt />
 										</div>
 										<div class="message-info">
 											<span class="sender">Arnold Karlsberg</span> <span
@@ -221,7 +221,7 @@ UsersAsset::register ( $this ); // $this 代表视图对象
 
 								<li><a href="#">
 										<div class="profile-photo">
-											<img src="assets/images/profile-photo.jpg" alt />
+											<img src="users/images/profile-photo.jpg" alt />
 										</div>
 										<div class="message-info">
 											<span class="sender">John Douey</span> <span class="time">3
@@ -233,7 +233,7 @@ UsersAsset::register ( $this ); // $this 代表视图对象
 
 								<li><a class="red" href="#">
 										<div class="profile-photo">
-											<img src="assets/images/peter-avatar.jpg" alt />
+											<img src="users/images/peter-avatar.jpg" alt />
 										</div>
 										<div class="message-info">
 											<span class="sender">Peter Kay</span> <span class="time">5
@@ -245,7 +245,7 @@ UsersAsset::register ( $this ); // $this 代表视图对象
 
 								<li><a class="orange" href="#">
 										<div class="profile-photo">
-											<img src="assets/images/george-avatar.jpg" alt />
+											<img src="users/images/george-avatar.jpg" alt />
 										</div>
 										<div class="message-info">
 											<span class="sender">George McCain</span> <span class="time">6
@@ -301,7 +301,7 @@ UsersAsset::register ( $this ); // $this 代表视图对象
 
 						<li class="dropdown divided user" id="current-user">
 							<div class="profile-photo">
-								<img src="assets/images/profile-photo.jpg" alt />
+								<img src="users/images/profile-photo.jpg" alt />
 							</div> <a class="dropdown-toggle options" data-toggle="dropdown"
 							href="#"> John Douey <i class="fa fa-caret-down"></i>
 						</a>
@@ -583,7 +583,7 @@ UsersAsset::register ( $this ); // $this 代表视图对象
 						<li class="online">
 							<div class="media">
 								<a class="pull-left profile-photo" href="#"> <img
-									class="media-object" src="assets/images/ici-avatar.jpg" alt>
+									class="media-object" src="users/images/ici-avatar.jpg" alt>
 								</a>
 								<div class="media-body">
 									<h6 class="media-heading">
@@ -599,7 +599,7 @@ UsersAsset::register ( $this ); // $this 代表视图对象
 							<div class="media">
 
 								<a class="pull-left profile-photo" href="#"> <img
-									class="media-object" src="assets/images/arnold-avatar.jpg" alt>
+									class="media-object" src="users/images/arnold-avatar.jpg" alt>
 								</a> <span class="badge badge-red unread">3</span>
 
 								<div class="media-body">
@@ -616,7 +616,7 @@ UsersAsset::register ( $this ); // $this 代表视图对象
 						<li class="online">
 							<div class="media">
 								<a class="pull-left profile-photo" href="#"> <img
-									class="media-object" src="assets/images/peter-avatar.jpg" alt>
+									class="media-object" src="users/images/peter-avatar.jpg" alt>
 
 								</a>
 								<div class="media-body">
@@ -632,7 +632,7 @@ UsersAsset::register ( $this ); // $this 代表视图对象
 						<li class="online">
 							<div class="media">
 								<a class="pull-left profile-photo" href="#"> <img
-									class="media-object" src="assets/images/george-avatar.jpg" alt>
+									class="media-object" src="users/images/george-avatar.jpg" alt>
 								</a>
 								<div class="media-body">
 									<h6 class="media-heading">
@@ -647,7 +647,7 @@ UsersAsset::register ( $this ); // $this 代表视图对象
 						<li class="busy">
 							<div class="media">
 								<a class="pull-left profile-photo" href="#"> <img
-									class="media-object" src="assets/images/random-avatar1.jpg" alt>
+									class="media-object" src="users/images/random-avatar1.jpg" alt>
 								</a>
 								<div class="media-body">
 									<h6 class="media-heading">
@@ -662,7 +662,7 @@ UsersAsset::register ( $this ); // $this 代表视图对象
 						<li class="busy">
 							<div class="media">
 								<a class="pull-left profile-photo" href="#"> <img
-									class="media-object" src="assets/images/random-avatar2.jpg" alt>
+									class="media-object" src="users/images/random-avatar2.jpg" alt>
 								</a>
 								<div class="media-body">
 									<h6 class="media-heading">
@@ -685,7 +685,7 @@ UsersAsset::register ( $this ); // $this 代表视图对象
 						<li class="offline">
 							<div class="media">
 								<a class="pull-left profile-photo" href="#"> <img
-									class="media-object" src="assets/images/random-avatar4.jpg" alt>
+									class="media-object" src="users/images/random-avatar4.jpg" alt>
 								</a>
 								<div class="media-body">
 									<h6 class="media-heading">
@@ -701,7 +701,7 @@ UsersAsset::register ( $this ); // $this 代表视图对象
 							<div class="media">
 
 								<a class="pull-left profile-photo" href="#"> <img
-									class="media-object" src="assets/images/random-avatar5.jpg" alt>
+									class="media-object" src="users/images/random-avatar5.jpg" alt>
 								</a>
 
 								<div class="media-body">
@@ -718,7 +718,7 @@ UsersAsset::register ( $this ); // $this 代表视图对象
 						<li class="offline">
 							<div class="media">
 								<a class="pull-left profile-photo" href="#"> <img
-									class="media-object" src="assets/images/random-avatar6.jpg" alt>
+									class="media-object" src="users/images/random-avatar6.jpg" alt>
 
 								</a>
 								<div class="media-body">
@@ -734,7 +734,7 @@ UsersAsset::register ( $this ); // $this 代表视图对象
 						<li class="offline">
 							<div class="media">
 								<a class="pull-left profile-photo" href="#"> <img
-									class="media-object" src="assets/images/random-avatar7.jpg" alt>
+									class="media-object" src="users/images/random-avatar7.jpg" alt>
 								</a>
 								<div class="media-body">
 									<h6 class="media-heading">
@@ -749,7 +749,7 @@ UsersAsset::register ( $this ); // $this 代表视图对象
 						<li class="offline">
 							<div class="media">
 								<a class="pull-left profile-photo" href="#"> <img
-									class="media-object" src="assets/images/random-avatar8.jpg" alt>
+									class="media-object" src="users/images/random-avatar8.jpg" alt>
 								</a>
 								<div class="media-body">
 									<h6 class="media-heading">
@@ -775,7 +775,7 @@ UsersAsset::register ( $this ); // $this 代表视图对象
 						<li class="online">
 							<div class="media">
 								<a class="pull-left profile-photo" href="#"> <img
-									class="media-object" src="assets/images/ici-avatar.jpg" alt>
+									class="media-object" src="users/images/ici-avatar.jpg" alt>
 								</a>
 								<div class="media-body">
 									<h6 class="media-heading">
@@ -792,7 +792,7 @@ UsersAsset::register ( $this ); // $this 代表视图对象
 							<div class="media">
 
 								<a class="pull-left profile-photo" href="#"> <img
-									class="media-object" src="assets/images/arnold-avatar.jpg" alt>
+									class="media-object" src="users/images/arnold-avatar.jpg" alt>
 								</a> <span class="badge badge-red unread">3</span>
 
 								<div class="media-body">
@@ -810,7 +810,7 @@ UsersAsset::register ( $this ); // $this 代表视图对象
 						<li class="offline">
 							<div class="media">
 								<a class="pull-left profile-photo" href="#"> <img
-									class="media-object" src="assets/images/peter-avatar.jpg" alt>
+									class="media-object" src="users/images/peter-avatar.jpg" alt>
 
 								</a>
 								<div class="media-body">
@@ -838,7 +838,7 @@ UsersAsset::register ( $this ); // $this 代表视图对象
 							<div class="media">
 
 								<a class="pull-left profile-photo" href="#"> <img
-									class="media-object" src="assets/images/arnold-avatar.jpg" alt>
+									class="media-object" src="users/images/arnold-avatar.jpg" alt>
 								</a> <span class="badge badge-red unread">3</span>
 
 								<div class="media-body">
@@ -855,7 +855,7 @@ UsersAsset::register ( $this ); // $this 代表视图对象
 						<li class="offline">
 							<div class="media">
 								<a class="pull-left profile-photo" href="#"> <img
-									class="media-object" src="assets/images/random-avatar8.jpg" alt>
+									class="media-object" src="users/images/random-avatar8.jpg" alt>
 								</a>
 								<div class="media-body">
 									<h6 class="media-heading">
@@ -870,7 +870,7 @@ UsersAsset::register ( $this ); // $this 代表视图对象
 						<li class="busy">
 							<div class="media">
 								<a class="pull-left profile-photo" href="#"> <img
-									class="media-object" src="assets/images/random-avatar1.jpg" alt>
+									class="media-object" src="users/images/random-avatar1.jpg" alt>
 								</a>
 								<div class="media-body">
 									<h6 class="media-heading">
@@ -885,7 +885,7 @@ UsersAsset::register ( $this ); // $this 代表视图对象
 						<li class="online">
 							<div class="media">
 								<a class="pull-left profile-photo" href="#"> <img
-									class="media-object" src="assets/images/ici-avatar.jpg" alt>
+									class="media-object" src="users/images/ici-avatar.jpg" alt>
 								</a>
 								<div class="media-body">
 									<h6 class="media-heading">
@@ -1033,37 +1033,37 @@ UsersAsset::register ( $this ); // $this 代表视图对象
 
 
 	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<!-- 	<script src="assets/js/jquery.js"></script> -->
+<!-- 	<script src="users/js/jquery.js"></script> -->
 	<!-- Include all compiled plugins (below), or include individual files as needed -->
-<!-- 	<script src="assets/js/vendor/bootstrap/bootstrap.min.js"></script> -->
+<!-- 	<script src="users/js/vendor/bootstrap/bootstrap.min.js"></script> -->
 	<script
 		src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js?lang=css&skin=sons-of-obsidian"></script>
 <!-- 	<script type="text/javascript"
-		src="assets/js/vendor/mmenu/js/jquery.mmenu.min.js"></script> -->
+		src="users/js/vendor/mmenu/js/jquery.mmenu.min.js"></script> -->
 <!-- 	<script type="text/javascript" -->
-<!-- 		src="assets/js/vendor/sparkline/jquery.sparkline.min.js"></script> -->
+<!-- 		src="users/js/vendor/sparkline/jquery.sparkline.min.js"></script> -->
 <!-- 	<script type="text/javascript" -->
-<!-- 		src="assets/js/vendor/nicescroll/jquery.nicescroll.min.js"></script> -->
+<!-- 		src="users/js/vendor/nicescroll/jquery.nicescroll.min.js"></script> -->
 <!-- 	<script type="text/javascript" -->
-<!-- 		src="assets/js/vendor/animate-numbers/jquery.animateNumbers.js"></script> -->
+<!-- 		src="users/js/vendor/animate-numbers/jquery.animateNumbers.js"></script> -->
 <!-- 	<script type="text/javascript" -->
-<!-- 		src="assets/js/vendor/videobackground/jquery.videobackground.js"></script> -->
+<!-- 		src="users/js/vendor/videobackground/jquery.videobackground.js"></script> -->
 <!-- 	<script type="text/javascript" -->
-<!-- 		src="assets/js/vendor/blockui/jquery.blockUI.js"></script> -->
+<!-- 		src="users/js/vendor/blockui/jquery.blockUI.js"></script> -->
 
-<!-- 	<script src="assets/js/vendor/datatables/jquery.dataTables.min.js"></script> -->
-<!-- 	<script src="assets/js/vendor/datatables/ColReorderWithResize.js"></script> -->
+<!-- 	<script src="users/js/vendor/datatables/jquery.dataTables.min.js"></script> -->
+<!-- 	<script src="users/js/vendor/datatables/ColReorderWithResize.js"></script> -->
 <!-- 	<script -->
-<!-- 		src="assets/js/vendor/datatables/colvis/dataTables.colVis.min.js"></script> -->
-<!-- 	<script src="assets/js/vendor/datatables/tabletools/ZeroClipboard.js"></script> -->
+<!-- 		src="users/js/vendor/datatables/colvis/dataTables.colVis.min.js"></script> -->
+<!-- 	<script src="users/js/vendor/datatables/tabletools/ZeroClipboard.js"></script> -->
 <!-- 	<script -->
-<!-- 		src="assets/js/vendor/datatables/tabletools/dataTables.tableTools.min.js"></script> -->
-<!-- 	<script src="assets/js/vendor/datatables/dataTables.bootstrap.js"></script> -->
+<!-- 		src="users/js/vendor/datatables/tabletools/dataTables.tableTools.min.js"></script> -->
+<!-- 	<script src="users/js/vendor/datatables/dataTables.bootstrap.js"></script> -->
 
-<!-- 	<script src="assets/js/vendor/chosen/chosen.jquery.min.js"></script> -->
+<!-- 	<script src="users/js/vendor/chosen/chosen.jquery.min.js"></script> -->
 
-<!-- 	<script src="assets/js/minimal.min.js"></script> -->
-
+<!-- 	<script src="users/js/minimal.min.js"></script> -->
+<?php $this->endBody()?>
 	<script>
     $(function(){
 
@@ -1271,7 +1271,7 @@ UsersAsset::register ( $this ); // $this 代表视图对象
         ],
         "aaSorting": [[ 1, "asc" ]],
         "bProcessing": true,
-        "sAjaxSource": "assets/js/vendor/datatables/ajax/sources/objects.txt",
+        "sAjaxSource": "users/js/vendor/datatables/ajax/sources/objects.txt",
         "aoColumns": [
           {
             "mDataProp": null,
@@ -1344,7 +1344,7 @@ UsersAsset::register ( $this ); // $this 代表视图对象
           "sSearch": ""
         },
         "oTableTools": {
-          "sSwfPath": "assets/js/vendor/datatables/tabletools/swf/copy_csv_xls_pdf.swf",
+          "sSwfPath": "users/js/vendor/datatables/tabletools/swf/copy_csv_xls_pdf.swf",
           "aButtons": [
             "copy",
             "print",
@@ -1382,7 +1382,7 @@ UsersAsset::register ( $this ); // $this 代表视图对象
     })
       
     </script>
-    <?php $this->endBody()?>
+    
 </body>
 </html>
 <?php $this->endPage()?>

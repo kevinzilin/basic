@@ -16,6 +16,7 @@ use yii\web\AssetBundle;
  */
 class UsersAsset extends AssetBundle {
 	// public $sourcePath='@app/modules/Users/web';
+	//public $jsOptions = ['position' => \yii\web\View::POS_HEAD];//将JS加载到头部 默认加载到endBody后
 	public $basePath = '@webroot';
 	public $baseUrl = '@web';
 	public $css = [ 
