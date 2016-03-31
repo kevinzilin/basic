@@ -78,10 +78,10 @@ class DefaultController extends Controller {
 			if ($MsgType == 'event') { // 关注和取消关注事件
 				if ($postObj->Event == 'subscribe') { // 关注
 					$contentStr = "欢迎关注";
-					$info = User::addUser ( strval($fromUsername) );
-					$contentStr = $info ? 'aaa' : 'fff';
-					$this->send_text_Msg ( $fromUsername, $toUsername, $time, $contentStr.$fromUsername );
+					$info = User::setUser ( $fromUsername, 1 );
+					$this->send_text_Msg ( $fromUsername, $toUsername, $time, $contentStr );
 				} elseif ($postObj->Event == 'unsubscribe') { // 取消关注
+					$info = User::setUser ( $fromUsername, 2 );
 				}
 			}
 			if ($MsgType == 'text') { // 普通文本消息 关键字匹配
@@ -92,16 +92,15 @@ class DefaultController extends Controller {
 									'description' => '描述',
 									'picur' => 'http://ww1.sinaimg.cn/crop.46.93.1106.1106.1024/0066BUlQjw8erhomdo2uwj30xc0xcq5z.jpg', // 图片地址
 									'url' => 'https://www.baidu.com/' 
-							] // 图文地址
-,
+							], // 图文地址
 							[ 
 									'title' => '测试2',
 									'description' => '描述2',
 									'picur' => 'http://img5.duitang.com/uploads/item/201307/22/20130722192550_4tWsr.thumb.224_0.gif', // 图片地址
 									'url' => 'https://www.baidu.com/' 
-							] // 图文地址
- 
-					];
+							] 
+					]; // 图文地址
+					
 					$this->send_photo_Msg ( $fromUsername, $toUsername, $time, $photo_arr );
 				} else {
 					$this->send_text_Msg ( $fromUsername, $toUsername, $time, $postObj->Content );

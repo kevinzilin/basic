@@ -9,7 +9,6 @@ class DefaultController extends Controller
 {
     public function actionIndex()
     {
-    	User::addUser('ohogAwjwWwV5utghN7YjlpBd5cam');
         return $this->render('index');
     }
 }

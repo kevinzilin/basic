@@ -178,14 +178,22 @@ class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface {
 		] )->asArray ();
 		return $orders;
 	}
-	public static function addUser($openid) { // 新增 修改微信用户
+	public static function setUser($openid, $follow_status) { // 新增 修改微信用户
+		$openid=strval($openid);//转为字符串
 		$user = User::find ()->where ( 'wx_openid=:openid', [ 
 				':openid' => $openid 
 		] )->one ();
 		if (empty ( $user )) {
 			$user = new User ();
+			$user->wx_openid = $openid;
 		}
-		$user->wx_openid=$openid;
+		$user->follow_status = $follow_status;
+		$time = time ();
+		if ($follow_status == 1) { // 关注
+			$user->follow_time = $time;
+		} else {
+			$user->cancel_time = $time;
+		}
 		return $user->save ();
 	}
 }
