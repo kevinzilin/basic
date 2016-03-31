@@ -78,7 +78,7 @@ class DefaultController extends Controller {
 			if ($MsgType == 'event') { // 关注和取消关注事件
 				if ($postObj->Event == 'subscribe') { // 关注
 					$contentStr = "欢迎关注";
-					$info = User::addUser ( 'gdgsdhsdh' );
+					$info = User::addUser ( strval($fromUsername) );
 					$contentStr = $info ? 'aaa' : 'fff';
 					$this->send_text_Msg ( $fromUsername, $toUsername, $time, $contentStr.$fromUsername );
 				} elseif ($postObj->Event == 'unsubscribe') { // 取消关注
