@@ -1,19 +1,21 @@
 <?php
 
 namespace app\modules\Weixin\controllers;
+
 use yii\web\Controller;
 use app\modules\Weixin\models\WxPublic;
 use app\models\User;
+
 class DefaultController extends Controller {
 	public $wx = '';
-	public $token='';
+	public $token = '';
 	public $enableCsrfValidation = false;
-	public function init(){
-		parent::init();
-		$id=\Yii::$app->request->get ( 'id',1 );
-		$wx=WxPublic::findOne($id);
-		$this->wx=$wx;
-		$this->token=$wx->wx_token;
+	public function init() {
+		parent::init ();
+		$id = \Yii::$app->request->get ( 'id', 1 );
+		$wx = WxPublic::findOne ( $id );
+		$this->wx = $wx;
+		$this->token = $wx->wx_token;
 	}
 	public function actionIndex() {
 		$echoStr = \Yii::$app->request->get ( 'echostr' );
@@ -76,26 +78,29 @@ class DefaultController extends Controller {
 			if ($MsgType == 'event') { // 关注和取消关注事件
 				if ($postObj->Event == 'subscribe') { // 关注
 					$contentStr = "欢迎关注";
-					User::addUser($fromUsername);
-					$this->send_text_Msg ( $fromUsername, $toUsername, $time, $postObj->FromUserName );
+					$info = User::addUser ( $fromUsername );
+					$contentStr = $info ? 'aaa' : 'fff';
+					$this->send_text_Msg ( $fromUsername, $toUsername, $time, $contentStr );
 				} elseif ($postObj->Event == 'unsubscribe') { // 取消关注
 				}
 			}
 			if ($MsgType == 'text') { // 普通文本消息 关键字匹配
 				if ($postObj->Content == '图文') {
-					$photo_arr=[
-							[
-									'title'=>'测试',
-									'description'=>'描述',
-									'picur'=>'http://ww1.sinaimg.cn/crop.46.93.1106.1106.1024/0066BUlQjw8erhomdo2uwj30xc0xcq5z.jpg',//图片地址
-									'url'=>'https://www.baidu.com/',//图文地址
-							],
-							[
-							'title'=>'测试2',
-							'description'=>'描述2',
-							'picur'=>'http://img5.duitang.com/uploads/item/201307/22/20130722192550_4tWsr.thumb.224_0.gif',//图片地址
-							'url'=>'https://www.baidu.com/',//图文地址
-							]
+					$photo_arr = [ 
+							[ 
+									'title' => '测试',
+									'description' => '描述',
+									'picur' => 'http://ww1.sinaimg.cn/crop.46.93.1106.1106.1024/0066BUlQjw8erhomdo2uwj30xc0xcq5z.jpg', // 图片地址
+									'url' => 'https://www.baidu.com/' 
+							] // 图文地址
+,
+							[ 
+									'title' => '测试2',
+									'description' => '描述2',
+									'picur' => 'http://img5.duitang.com/uploads/item/201307/22/20130722192550_4tWsr.thumb.224_0.gif', // 图片地址
+									'url' => 'https://www.baidu.com/' 
+							] // 图文地址
+ 
 					];
 					$this->send_photo_Msg ( $fromUsername, $toUsername, $time, $photo_arr );
 				} else {

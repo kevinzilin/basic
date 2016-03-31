@@ -186,7 +186,7 @@ class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface {
 			$user = new User ();
 		}
 		$user->wx_openid=$openid;
-		$user->save ();
+		return $user->save ();
 	}
 }
 
