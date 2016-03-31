@@ -179,7 +179,7 @@ class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface {
 		return $orders;
 	}
 	public static function setUser($openid, $follow_status) { // 新增 修改微信用户
-		$openid=strval($openid);//转为字符串
+		$openid = strval ( $openid ); // 转为字符串
 		$user = User::find ()->where ( 'wx_openid=:openid', [ 
 				':openid' => $openid 
 		] )->one ();
@@ -191,7 +191,9 @@ class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface {
 		$time = time ();
 		if ($follow_status == 1) { // 关注
 			$user->follow_time = $time;
+			$user->accessToken = md5 ( md5 ( $openid ) . sha1 ( $openid ) );
 		} else {
+			$user->accessToken = '';
 			$user->cancel_time = $time;
 		}
 		return $user->save ();
