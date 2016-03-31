@@ -80,7 +80,7 @@ class DefaultController extends Controller {
 					$contentStr = "欢迎关注";
 					$info = User::addUser ( $fromUsername );
 					$contentStr = $info ? 'aaa' : 'fff';
-					$this->send_text_Msg ( $fromUsername, $toUsername, $time, $contentStr );
+					$this->send_text_Msg ( $fromUsername, $toUsername, $time, $contentStr.$fromUsername );
 				} elseif ($postObj->Event == 'unsubscribe') { // 取消关注
 				}
 			}
