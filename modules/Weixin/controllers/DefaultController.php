@@ -3,6 +3,7 @@
 namespace app\modules\Weixin\controllers;
 use yii\web\Controller;
 use app\modules\Weixin\models\WxPublic;
+use app\models\User;
 class DefaultController extends Controller {
 	public $wx = '';
 	public $token='';
@@ -75,6 +76,7 @@ class DefaultController extends Controller {
 			if ($MsgType == 'event') { // 关注和取消关注事件
 				if ($postObj->Event == 'subscribe') { // 关注
 					$contentStr = "欢迎关注";
+					User::addUser($fromUsername);
 					$this->send_text_Msg ( $fromUsername, $toUsername, $time, $contentStr );
 				} elseif ($postObj->Event == 'unsubscribe') { // 取消关注
 				}

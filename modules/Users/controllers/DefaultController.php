@@ -9,7 +9,6 @@ class DefaultController extends Controller
 {
     public function actionIndex()
     {
-    	User::addUser('23');
         return $this->render('index');
     }
 }
