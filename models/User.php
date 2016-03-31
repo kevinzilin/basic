@@ -1,18 +1,25 @@
 <?php
 
 namespace app\models;
+
+use Yii;
+
 /**
  * This is the model class for table "user".
  *
  * @property integer $id
  * @property string $username
  * @property string $wx_name
+ * @property string $wx_img
+ * @property string $wx_openid
  * @property string $password
  * @property string $authKey
  * @property string $accessToken
- * @property string $wx_openid
+ * @property integer $follow_status
+ * @property integer $follow_time
+ * @property integer $cancel_time
  */
-class User extends /*\yii\base\Object*/ \yii\db\ActiveRecord implements \yii\web\IdentityInterface {
+class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface {
 	/**
 	 * @inheritdoc
 	 */
@@ -23,32 +30,62 @@ class User extends /*\yii\base\Object*/ \yii\db\ActiveRecord implements \yii\web
 	/**
 	 * @inheritdoc
 	 */
-	public function rules()
-	{
-		return [
-				[['username', 'password'], 'required'],
-				[['username'], 'string', 'max' => 50],
-				[['wx_name', 'wx_openid'], 'string', 'max' => 255],
-				[['password', 'authKey', 'accessToken'], 'string', 'max' => 100]
+	public function rules() {
+		return [ 
+				[ 
+						[ 
+								'follow_status',
+								'follow_time',
+								'cancel_time' 
+						],
+						'integer' 
+				],
+				[ 
+						[ 
+								'username' 
+						],
+						'string',
+						'max' => 50 
+				],
+				[ 
+						[ 
+								'wx_name',
+								'wx_img',
+								'wx_openid' 
+						],
+						'string',
+						'max' => 255 
+				],
+				[ 
+						[ 
+								'password',
+								'authKey',
+								'accessToken' 
+						],
+						'string',
+						'max' => 100 
+				] 
 		];
 	}
 	
 	/**
 	 * @inheritdoc
 	 */
-	public function attributeLabels()
-	{
-		return [
+	public function attributeLabels() {
+		return [ 
 				'id' => 'ID',
 				'username' => 'Username',
 				'wx_name' => 'Wx Name',
+				'wx_img' => 'Wx Img',
+				'wx_openid' => 'Wx Openid',
 				'password' => 'Password',
 				'authKey' => 'Auth Key',
 				'accessToken' => 'Access Token',
-				'wx_openid' => 'Wx Openid',
+				'follow_status' => 'Follow Status',
+				'follow_time' => 'Follow Time',
+				'cancel_time' => 'Cancel Time' 
 		];
 	}
-	
 	/**
 	 * @inheritdoc
 	 */
@@ -132,7 +169,7 @@ class User extends /*\yii\base\Object*/ \yii\db\ActiveRecord implements \yii\web
 	 * @return boolean if password provided is valid for current user
 	 */
 	public function validatePassword($password) {
-		$password = md5 ( md5 ( $password ) . sha1 ( $password ) );//加密 
+		$password = md5 ( md5 ( $password ) . sha1 ( $password ) ); // 加密
 		return $this->password === $password;
 	}
 	public function getOrders() {
@@ -140,6 +177,15 @@ class User extends /*\yii\base\Object*/ \yii\db\ActiveRecord implements \yii\web
 				'user_id' => 'id' 
 		] )->asArray ();
 		return $orders;
+	}
+	public static function addUser($openid) { // 新增 修改微信用户
+		$user = User::find ()->where ( 'wx_openid=:openid', [ 
+				':openid' => $openid 
+		] )->one ();
+		if (empty ( $user )) {
+			$user = new User ();
+		}
+		$user->save ();
 	}
 }
 

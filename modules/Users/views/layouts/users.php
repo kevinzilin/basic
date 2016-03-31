@@ -1036,8 +1036,8 @@ UsersAsset::register ( $this ); // $this 代表视图对象
 <!-- 	<script src="users/js/jquery.js"></script> -->
 	<!-- Include all compiled plugins (below), or include individual files as needed -->
 <!-- 	<script src="users/js/vendor/bootstrap/bootstrap.min.js"></script> -->
-	<script
-		src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js?lang=css&skin=sons-of-obsidian"></script>
+<!-- 	<script -->
+<!-- 		src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js?lang=css&skin=sons-of-obsidian"></script> -->
 <!-- 	<script type="text/javascript"
 		src="users/js/vendor/mmenu/js/jquery.mmenu.min.js"></script> -->
 <!-- 	<script type="text/javascript" -->
