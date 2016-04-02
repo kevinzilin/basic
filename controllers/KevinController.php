@@ -6,8 +6,6 @@ use yii\web\Controller;
 use app\models\Test;
 use app\models\User;
 use app\models\Order;
-use app\commands\HelloController;
-
 class KevinController extends Controller {
 	public function actionIndex() {
 		// $request = \YII::$app->request; // 请求组件
