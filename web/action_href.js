@@ -1,5 +1,5 @@
 var url=window.location.href;
-var host=window.location.host
+var host=window.location.host;
 function GetRequest() {
 	var url = location.search; //获取url中"?"符后的字串
    	if (url.indexOf("?") !=-1){
